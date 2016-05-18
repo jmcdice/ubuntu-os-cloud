@@ -1,0 +1,40 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# Private network, bridged interface
+auto br0
+iface br0 inet static
+        address 10.1.0.1
+        netmask 255.255.255.0
+        network 10.1.0.0
+        broadcast 10.1.0.255
+        bridge_ports enp4s0f0
+        bridge_stp off
+        bridge_fd 0
+        bridge_maxwait 0
+
+# Public Network
+auto enp4s0f1
+iface enp4s0f1 inet static
+        address 135.227.255.55
+        netmask 255.255.248.0
+        network 135.227.248.0
+        broadcast 135.227.255.255
+        gateway 135.227.248.1
+        # dns-* options are implemented by the resolvconf package, if installed
+        dns-nameservers 135.1.1.111
+        dns-search cloud-band.com
+
+# Storage Network
+auto enp5s0d1
+iface enp5s0d1 inet static
+        address 10.3.0.1
+        netmask 255.255.255.0
+        mtu 9000
+

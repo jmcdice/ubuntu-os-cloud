@@ -1,0 +1,6 @@
+# This is a list of packages we need on the cluster frontend
+
+sudo apt-get install \
+   xfce4 xfce4-goodies tightvncserver \ # VNC Stuff
+   virt-manager ubuntu-vm-builder bridge-utils \ # VM tools
+   
