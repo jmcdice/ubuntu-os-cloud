@@ -1,0 +1,17 @@
+# Mirror ends up in /var/spool/apt-mirror/mirror/archive.ubuntu.com/ubuntu/
+set nthreads     3
+set _tilde 0
+
+# Trusty
+deb-amd64 http://archive.ubuntu.com/ubuntu trusty main restricted
+deb-amd64 http://archive.ubuntu.com/ubuntu trusty-security main restricted
+deb-amd64 http://archive.ubuntu.com/ubuntu trusty-updates main restricted
+
+# Xenial
+deb-amd64 http://archive.ubuntu.com/ubuntu xenial main restricted universe multiverse
+deb-amd64 http://archive.ubuntu.com/ubuntu xenial-security main restricted universe multiverse
+deb-amd64 http://archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse
+deb-amd64 http://archive.ubuntu.com/ubuntu xenial-backports main restricted universe multiverse
+
+clean http://archive.ubuntu.com/ubuntu
+
