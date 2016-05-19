@@ -18,6 +18,7 @@ function build_vm() {
     --arch amd64 \
     --mem 2048 \
     --cpus 4 \
+    --rootsize 102400 \
     --user $user \
     --pass $pass \
     --ssh-key ~/.ssh/id_rsa.pub \
