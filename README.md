@@ -1,6 +1,23 @@
 # ubuntu-os-cloud
 
 Install and configure an ubuntu openstack cloud platform.
+The purpose of this project is to be able to build 14.04 or 16.04 OpenStack cluster using
+MAAS, Juju and OpenStack.
+
+The idea is to build a cluster frontend on 16.04. Then, using scripts in vm-builder/ create
+either: 
+
+   14.04 MAAS
+   14.04 Juju
+or
+   16.04 MAAS
+   16.04 Juju
+
+as VM's running on the cluster frontend. Scripts are in vm-builder/ directory.
+
+Then, under the maas/ directory, simply copy up the maas-{trusty|xenial} script and executed it
+on the VM. 
+
 
 # Networking
 

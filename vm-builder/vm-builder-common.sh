@@ -4,6 +4,13 @@ function build_vm() {
 
    echo "Building: $vm"
 
+   # We'll use this ssh key to login to our VM's
+   # Create it if it doesn't exist.
+   if [ ! -f ~/.ssh/id_rsa ]; then
+      echo "Creating rsa key."
+      ssh-keygen -N '' -f ~/.ssh/id_rsa &> /dev/null
+   fi
+
    sudo ubuntu-vm-builder kvm $rel \
     --domain $domain \
     --dest $vm \
@@ -11,8 +18,8 @@ function build_vm() {
     --arch amd64 \
     --mem 2048 \
     --cpus 4 \
-    --user $user \
-    --pass $pass \
+    --user $user --pass $pass \
+    --ssh-key ~/.ssh/id_rsa.pub \
     --bridge br0 \
     --ip $ip \
     --mask $mask \
@@ -33,22 +40,7 @@ function start_vm() {
    grep -q $vm /etc/hosts || sudo sh -c "echo '$ip $vm' >> /etc/hosts"
 }
 
-function push_key() {
+function wait_for_vm() {
 
-   # Create a key and push it
-
-   if [ ! -f '/.ssh/id_rsa' ]; then
-      echo "Creating ssh key."
-      ssh-keygen
-   fi
-
-   ssh-copy-id $vm
-
-   # Set a new password
-   echo "Changing $vm password."
-   ssh $vm 'passwd'
+   while ! nc -w 2 -z $vm 22; do sleep 2; done
 }
-
-
-
-
