@@ -7,7 +7,7 @@ source ./vm-builder-common.sh || ( echo "Failed: Need vm-builder-common.sh" && e
 # Env specific
 vm='maas-xenial'
 rel='xenial'
-ip='10.1.0.4'
+ip='10.1.0.22'
 mask='255.255.255.0'
 net='10.1.0.0'
 bcast='10.1.0.255'

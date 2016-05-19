@@ -6,7 +6,7 @@ function build_vm() {
 
    # We'll use this ssh key to login to our VM's
    # Create it if it doesn't exist.
-   if [ ! -f ~/.ssh/id_rsa ]; then
+   if [ ! -f ~/.ssh/id_rsa.pub ]; then
       echo "Creating rsa key."
       ssh-keygen -N '' -f ~/.ssh/id_rsa &> /dev/null
    fi
