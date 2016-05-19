@@ -2,25 +2,21 @@
 # 
 # Change password post-install.
 
-sudo ubuntu-vm-builder kvm xenial \
-    --domain cloud-band.com \
-    --dest maas-xenial \
-    --hostname maas-xenial \
-    --arch amd64 \
-    --mem 2048 \
-    --cpus 4 \
-    --user joey \
-    --pass password \
-    --bridge br0 \
-    --ip 10.1.0.4 \
-    --mask 255.255.255.0 \
-    --net 10.1.0.0 \
-    --bcast 10.1.0.255 \
-    --gw 10.1.0.1 \
-    --dns 10.1.0.1 \
-    --components main,universe \
-    --addpkg acpid \
-    --addpkg openssh-server \
-    --addpkg linux-image-generic \
-    --libvirt qemu:///system ;
+source ./vm-builder-common.sh || ( echo "Failed: Need vm-builder-common.sh" && exit 1 )
+
+# Env specific
+vm='maas-xenial'
+rel='xenial'
+ip='10.1.0.4'
+mask='255.255.255.0'
+net='10.1.0.0'
+bcast='10.1.0.255'
+gw='10.1.0.1'
+
+domain='cloud-band.com'
+user='joey'
+pass='password01'
+
+build_vm
+start_vm
 
