@@ -18,7 +18,8 @@ function build_vm() {
     --arch amd64 \
     --mem 2048 \
     --cpus 4 \
-    --user $user --pass $pass \
+    --user $user \
+    --pass $pass \
     --ssh-key ~/.ssh/id_rsa.pub \
     --bridge br0 \
     --ip $ip \
@@ -40,7 +41,8 @@ function start_vm() {
    grep -q $vm /etc/hosts || sudo sh -c "echo '$ip $vm' >> /etc/hosts"
 }
 
-function wait_for_vm() {
+function wait_for_ssh() {
 
    while ! nc -w 2 -z $vm 22; do sleep 2; done
+   echo "$vm is up."
 }

@@ -18,5 +18,6 @@ pass='password01'
 
 build_vm
 start_vm
-wait_for_vm
+wait_for_ssh
 
+ssh-copy-id $vm

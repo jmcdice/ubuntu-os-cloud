@@ -1,7 +1,8 @@
 # MAAS Trusty Install
-# Configure MAAS/Juju for installing stuff.
 
-# Install our software
+suser='joey'
+sudo "echo '$suser ALL=(ALL) NOPASSWD: ALL' >> /etc/suoders"
+
 sudo apt-get install software-properties-common
 sudo apt-add-repository ppa:maas/stable
 sudo apt-get update
