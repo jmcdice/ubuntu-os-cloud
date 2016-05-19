@@ -1,0 +1,19 @@
+# MAAS Trusty Install
+# Configure MAAS/Juju for installing stuff.
+
+# Configure some simple DNS for accessing your management hosts.
+
+# Create a key and push it
+ssh-keygen
+ssh-copy-id maas-trusty
+ssh-copy-id juju-trusty
+
+# Set a new password
+ssh maas-trusty 'passwd'
+ssh juju-trusty 'passwd'
+
+ssh maas-trusty 'sudo apt-get install software-properties-common'
+ssh maas-trusty 'sudo apt-add-repository ppa:maas/stable'
+ssh maas-trusty 'sudo apt-get update'
+ssh maas-trusty 'sudo apt-get -y install maas'
+ssh maas-trusty 'sudo maas-region-admin createadmin'

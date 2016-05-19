@@ -33,4 +33,22 @@ function start_vm() {
    grep -q $vm /etc/hosts || sudo sh -c "echo '$ip $vm' >> /etc/hosts"
 }
 
+function push_key() {
+
+   # Create a key and push it
+
+   if [ ! -f '/.ssh/id_rsa' ]; then
+      echo "Creating ssh key."
+      ssh-keygen
+   fi
+
+   ssh-copy-id $vm
+
+   # Set a new password
+   echo "Changing $vm password."
+   ssh $vm 'passwd'
+}
+
+
+
 
