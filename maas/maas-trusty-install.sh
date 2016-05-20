@@ -16,10 +16,12 @@ function configure_maas() {
    # Create the MAAS login session
    sudo maas-region-admin createadmin --username=admin --password=admin --email=nobody@cloud-band.com
    maas login admin http://$ip/MAAS/api/1.0 $(sudo maas-region-admin apikey --username=admin)
+}
+
+function configure_private() {
 
    uuid=$(maas admin node-groups list | grep uuid | cut -d\" -f4)
 
-   sleep 60 # I think MAAS needs a bit of time to get happy for some reason.
    maas admin node-group-interface update $uuid eth0 \
       ip_range_low=10.1.0.100 \
       ip_range_high=10.1.0.200 \
@@ -40,4 +42,6 @@ function import_images() {
 
 install_maas
 configure_maas
+sleep 60 
+configure_private
 import_images
