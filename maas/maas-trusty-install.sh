@@ -14,7 +14,7 @@ function configure_maas() {
    ip=$(ifconfig eth0|perl -lane 'print $1 if (/t addr:(.*?)\s/)')
 
    # Create the MAAS login session
-   maas-region-admin createadmin --username=admin --password=admin --email=nobody@cloud-band.com
+   sudo maas-region-admin createadmin --username=admin --password=admin --email=nobody@cloud-band.com
    maas login admin http://$ip/MAAS/api/1.0 $(sudo maas-region-admin apikey --username=admin)
 
    uuid=$(maas admin node-groups list | grep uuid | cut -d\" -f4)
