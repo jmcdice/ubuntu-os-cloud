@@ -1,5 +1,5 @@
 # MAAS Trusty Install
-# Execute as sudo ./maas-trusty-install.sh
+# bash maas-trusty-install.sh
 
 function install_maas() {
 
