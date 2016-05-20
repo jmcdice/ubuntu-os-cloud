@@ -37,6 +37,6 @@ function import_images() {
    maas admin boot-resources import
 }
 
-#install_maas
+install_maas
 configure_maas
-#import_images
+import_images
