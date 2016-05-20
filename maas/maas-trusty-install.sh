@@ -3,10 +3,10 @@
 
 function install_maas() {
 
-   apt-get -y install software-properties-common vim
-   apt-add-repository -y ppa:maas/stable
-   apt-get update
-   apt-get -y install maas
+   sudo apt-get -y install software-properties-common vim
+   sudo apt-add-repository -y ppa:maas/stable
+   sudo apt-get update
+   sudo apt-get -y install maas
 }
 
 function configure_maas() {
@@ -37,6 +37,6 @@ function import_images() {
    maas admin boot-resources import
 }
 
-install_maas
+#install_maas
 configure_maas
-import_images
+#import_images
