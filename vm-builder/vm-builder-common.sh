@@ -31,6 +31,7 @@ function build_vm() {
     --dns $gw \
     --components main,universe \
     --addpkg acpid \
+    --addpkg vim \
     --addpkg openssh-server \
     --addpkg linux-image-generic \
     --libvirt qemu:///system ;

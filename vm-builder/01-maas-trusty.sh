@@ -12,9 +12,9 @@ net='10.1.0.0'
 bcast='10.1.0.255'
 gw='10.1.0.1'
 
-domain='cloud-band.com'
 user='joey'
 pass='password01'
+domain='cloud-band.com'
 
 build_vm
 start_vm
