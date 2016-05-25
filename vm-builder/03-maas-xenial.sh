@@ -17,6 +17,10 @@ domain='cloud-band.com'
 user='joey'
 pass='password01'
 
-build_vm
+echo "" > ~/.ssh/known_hosts
+#build_vm
+#sudo guestmount -a maas-xenial/tmpELDFKn.qcow2 -i /mnt/
+sudo sed -i 's/eth0/ens3/' /mnt/etc/network/interfaces
+sudo umount /mnt/
 start_vm
 
