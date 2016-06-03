@@ -6,7 +6,7 @@ function install_maas() {
 
    pkgs='git vim lsof tcpdump strace htop nload software-properties-common'
    sudo apt-get -y install $pkgs
-   sudo apt-add-repository ppa:maas/next
+   echo "" | sudo apt-add-repository ppa:maas/next
    sudo apt-get update
    sudo apt-get -y install maas
 }
@@ -34,7 +34,9 @@ function import_images() {
    maas admin boot-resources import
 }
 
+sudo sh -c 'echo "nameserver 135.1.1.111" >> /etc/resolv.conf'
 install_maas
+sudo dpkg-reconfigure maas-rack-controller
 configure_maas
 sleep 60 
 import_images
